@@ -1,4 +1,4 @@
-package database
+package tempdb
 
 import (
 	"context"
@@ -6,7 +6,7 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/Alviner/drillerfy/database/querier"
+	"github.com/Alviner/drillerfy/tempdb/querier"
 	"github.com/google/uuid"
 )
 

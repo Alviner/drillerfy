@@ -1,4 +1,4 @@
-package database
+package tempdb
 
 import (
 	"context"

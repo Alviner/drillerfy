@@ -1,0 +1,83 @@
+output:
+  format: colored-line-number
+  print-issued-lines: true
+  print-linter-name: true
+
+linters:
+  disable-all: true
+  enable:
+    - errcheck
+    - typecheck
+    - unused
+    - unparam
+    - ineffassign
+    - unconvert
+    - goconst
+    - gocyclo
+    - gosimple
+    - revive
+    - govet
+    - gosec
+    - gochecknoinits
+    - gocritic
+    - godox
+    - misspell
+    - nakedret
+    - prealloc
+    - dupl
+    - wsl
+    - staticcheck
+    - megacheck
+    - gas
+    - asciicheck
+    - asasalint
+    - bidichk
+    - bodyclose
+    - contextcheck
+    - dogsled
+    - durationcheck
+    - errchkjson
+    - errname
+    - errorlint
+    - exhaustive
+    - exportloopref
+    - forcetypeassert
+    - gocheckcompilerdirectives
+    - godot
+    - goimports
+    - gosmopolitan
+    - inamedparam
+    - ireturn
+    - makezero
+    - mirror
+    - musttag
+    - nakedret
+    - nestif
+    - nilerr
+    - nilnil
+    - nlreturn
+    - noctx
+    - nosprintfhostport
+    - paralleltest
+    - perfsprint
+    - protogetter
+    - reassign
+    - rowserrcheck
+    - sloglint
+    - sqlclosecheck
+    - tagalign
+    - tagliatelle
+    - tenv
+    - testableexamples
+    - testifylint
+    - thelper
+    - tparallel
+    - usestdlibvars
+    - wastedassign
+    - whitespace
+    #- spancheck ## will be enabled in version 1.56.0, current 1.55.2
+
+linters-settings:
+  nakedret:
+    # Make an issue if func has more lines of code than this setting, and it has naked returns.
+    max-func-lines: 0

@@ -62,7 +62,7 @@ Provides functionality to easily run stairway tests for migrations via goose Pro
 This module simplifies the process of applying and reverting database schema changes,
 which is essential in maintaining consistent database states for testing.
 
-````(go)
+```(go)
 package main
 
 import (

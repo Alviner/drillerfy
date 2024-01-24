@@ -87,7 +87,7 @@ func (s *DB) Delete(ctx context.Context, name string, db *sql.DB) error {
 }
 
 func (s *DB) disconnect(ctx context.Context, name string, db *sql.DB) error {
-	q := s.querier.DisconnectFomDatabase(name)
+	q := s.querier.DisconnectFromDatabase(name)
 	if _, err := db.ExecContext(ctx, q); err != nil {
 		return fmt.Errorf("failed to disconnect database %s: %w", name, err)
 	}

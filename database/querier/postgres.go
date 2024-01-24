@@ -17,7 +17,7 @@ func (p *Postgres) DeleteDatabase(name string) string {
 	return fmt.Sprintf(q, name)
 }
 
-func (p *Postgres) DisconnectFomDatabase(name string) string {
+func (p *Postgres) DisconnectFromDatabase(name string) string {
 	q := `SELECT pg_terminate_backend(pg_stat_activity.pid)
             FROM pg_stat_activity
             WHERE pg_stat_activity.datname = '%s'

@@ -62,7 +62,7 @@ func TestDatabase(t *testing.T) {
 		require.NoError(err)
 		dbName, closer, err := database.Create(ctx, "test", conn)
 		require.NoError(err)
-		defer closer()
+		defer func() { require.NoError(closer()) }()
 
 		names, err := dbNames(t, conn)
 		require.NoError(err)
@@ -81,13 +81,13 @@ func TestDatabase(t *testing.T) {
 		require.NoError(err)
 		templateName, templateCloser, err := template.Create(ctx, "template", conn)
 		require.NoError(err)
-		defer templateCloser()
+		defer func() { require.NoError(templateCloser()) }()
 
 		database, err := New(WithDialect(DialectPostgres), WithTemplate(templateName))
 		require.NoError(err)
 		dbName, closer, err := database.Create(ctx, "test", conn)
 		require.NoError(err)
-		defer closer()
+		defer func() { require.NoError(closer()) }()
 
 		names, err := dbNames(t, conn)
 		require.NoError(err)

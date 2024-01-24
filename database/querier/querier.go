@@ -5,5 +5,5 @@ package querier
 type Querier interface {
 	CreateDatabase(name, temlate string) string
 	DeleteDatabase(name string) string
-	DisconnectFomDatabase(name string) string
+	DisconnectFromDatabase(name string) string
 }

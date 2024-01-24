@@ -9,6 +9,18 @@ on:
 jobs:
   ci:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_USER: pguser
+          POSTGRES_PASSWORD: pgpass
+          POSTGRES_DB: pgdb
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     steps:
       - uses: actions/checkout@v3
 
@@ -27,3 +39,5 @@ jobs:
 
       - name: Test
         run: make test
+        env:
+          TEST_PG_DNS: postgres://pguser:pgpass@postgres:5432/pgdb

@@ -21,6 +21,8 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
+        ports:
+          - 5432:5432
     steps:
       - uses: actions/checkout@v3
 
@@ -40,4 +42,4 @@ jobs:
       - name: Test
         run: make test
         env:
-          TEST_PG_DNS: postgres://pguser:pgpass@postgres:5432/pgdb
+          TEST_PG_DNS: postgres://pguser:pgpass@localhost:5432/pgdb

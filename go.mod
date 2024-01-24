@@ -1,4 +1,4 @@
-module github.com/alviner/drillerfy
+module github.com/Alviner/drillerfy
 
 go 1.21.6
 

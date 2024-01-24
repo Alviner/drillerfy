@@ -98,7 +98,6 @@ func main() {
     if err := migrations.Stairway(2 * time.Second); err != nil {
         log.Fatal(err)
     }
-    // ... some useful staff with created db
 }
 
 ```

@@ -85,7 +85,7 @@ func TestMigrations(t *testing.T) {
 		require.NoError(err)
 		defer closer()
 
-		migrations := New(t, provider)
+		migrations := New(provider)
 		ctx, done := context.WithTimeout(context.Background(), 2*time.Second)
 		defer done()
 
@@ -106,7 +106,7 @@ func TestMigrations(t *testing.T) {
 		ctx, done := context.WithTimeout(context.Background(), 2*time.Second)
 		defer done()
 
-		migrations := New(t, provider)
+		migrations := New(provider)
 
 		// act
 		require.NoError(migrations.Stairway(2 * time.Second))

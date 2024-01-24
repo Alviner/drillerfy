@@ -53,6 +53,7 @@ func TestDatabase(t *testing.T) {
 
 	t.Run("create", func(t *testing.T) {
 		t.Parallel()
+		// arrange
 		ctx, done := context.WithTimeout(context.Background(), 2*time.Second)
 		defer done()
 
@@ -60,18 +61,21 @@ func TestDatabase(t *testing.T) {
 		require.NoError(err)
 		database, err := New(WithDialect(DialectPostgres))
 		require.NoError(err)
+
+		//act
 		dbName, closer, err := database.Create(ctx, "test", conn)
 		require.NoError(err)
 		defer func() { require.NoError(closer()) }()
 
+		// assert
 		names, err := dbNames(t, conn)
 		require.NoError(err)
-
 		assert.Contains(names, dbName)
 
 	})
 	t.Run("create from template", func(t *testing.T) {
 		t.Parallel()
+		// arrange
 		ctx, done := context.WithTimeout(context.Background(), 5*time.Second)
 		defer done()
 
@@ -85,19 +89,22 @@ func TestDatabase(t *testing.T) {
 
 		database, err := New(WithDialect(DialectPostgres), WithTemplate(templateName))
 		require.NoError(err)
+
+		// act
 		dbName, closer, err := database.Create(ctx, "test", conn)
 		require.NoError(err)
 		defer func() { require.NoError(closer()) }()
 
+		// assert
 		names, err := dbNames(t, conn)
 		require.NoError(err)
-
 		assert.Contains(names, dbName)
 
 	})
 
 	t.Run("clear", func(t *testing.T) {
 		t.Parallel()
+		// arrange
 		ctx, done := context.WithTimeout(context.Background(), 2*time.Second)
 		defer done()
 
@@ -108,8 +115,10 @@ func TestDatabase(t *testing.T) {
 		dbName, closer, err := database.Create(ctx, "test", conn)
 		require.NoError(err)
 
+		// act
 		require.NoError(closer())
 
+		// assert
 		names, err := dbNames(t, conn)
 		require.NoError(err)
 		assert.NotContains(names, dbName)

@@ -8,7 +8,8 @@ making it easier to test Go applications that interact with databases.
 
 ## Features
 
-- Easy setup and teardown of database tests.
+- Easy setup and teardown of databases.
+- Easy migrations stairway tests.
 - Support for multiple database engines.
 
 ## Installation

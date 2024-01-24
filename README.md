@@ -29,33 +29,31 @@ This is particularly useful in testing environments where you need to set up a f
 package main
 
 import (
-    "context"
-    "database/sql"
-    "log"
+ "context"
+ "database/sql"
+ "log"
 
-    _ "github.com/jackc/pgx/v5/stdlib"
-    "github.com/Alviner/drillerfy/database"
-
+ "github.com/Alviner/drillerfy/database"
+ _ "github.com/jackc/pgx/v5/stdlib"
 )
 
 func main() {
-    conn, err := sql.Open("pgx", "database dns")
-    if err != nil {
-        log.Fatal(err)
-    }
-    database, err := database.New(database.WithDialect(database.DialectPostgres))
-    if err != nil {
-        log.Fatal(err)
-    }
+ conn, err := sql.Open("pgx", "database dns")
+ if err != nil {
+  log.Fatal(err)
+ }
+ database, err := database.New(database.WithDialect(database.DialectPostgres))
+ if err != nil {
+  log.Fatal(err)
+ }
 
-    dbName, closer, err := database.Create(ctx, "test", conn)
-    if err != nil {
-        log.Fatal(err)
-    }
-    defer closer()
-    // ... some useful staff with created db
+ dbName, closer, err := database.Create(context.Background(), "test", conn)
+ if err != nil {
+  log.Fatal(err)
+ }
+ defer closer()
+ // ... some useful staff with created db
 }
-
 ```
 
 ### Migrations Module
@@ -64,42 +62,40 @@ Provides functionality to easily run stairway tests for migrations via goose Pro
 This module simplifies the process of applying and reverting database schema changes,
 which is essential in maintaining consistent database states for testing.
 
-```(go)
+````(go)
 package main
 
 import (
-    "context"
-    "database/sql"
-    "log"
-    "time"
+ "database/sql"
+ "log"
+ "os"
+ "time"
 
-    _ "github.com/jackc/pgx/v5/stdlib"
+ _ "github.com/jackc/pgx/v5/stdlib"
 
-    "github.com/pressly/goose/v3"
-    "github.com/Alviner/drillerfy/migrations"
-
+ "github.com/Alviner/drillerfy/migrations"
+ "github.com/pressly/goose/v3"
 )
 
 func main() {
-    db, err := sql.Open("pgx", "database dns")
-    if err != nil {
-        log.Fatal(err)
-    }
-    provider, err := goose.NewProvider(
-        goose.DialectPostgres,
-        db,
-        os.DirFS("migrations"),
-    )
-    if err != nil {
-        log.Fatal(err)
-    }
-    migrator := migrations.New(provider)
+ db, err := sql.Open("pgx", "database dns")
+ if err != nil {
+  log.Fatal(err)
+ }
+ provider, err := goose.NewProvider(
+  goose.DialectPostgres,
+  db,
+  os.DirFS("migrations"),
+ )
+ if err != nil {
+  log.Fatal(err)
+ }
+ migrator := migrations.New(provider)
 
-    if err := migrations.Stairway(2 * time.Second); err != nil {
-        log.Fatal(err)
-    }
+ if err := migrator.Stairway(2 * time.Second); err != nil {
+  log.Fatal(err)
+ }
 }
-
 ```
 
 ## Contributing
@@ -117,3 +113,4 @@ See the LICENSE file in the repository for full license text.
 
 Drillerfy was created and is maintained by [Alviner](https://github.com/Alviner).
 Contributions from the community are appreciated.
+````

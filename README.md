@@ -1,5 +1,9 @@
 # Drillerfy: Go Database Testing Simplified
 
+[![CI](https://github.com/Alviner/drillerfy/actions/workflows/ci.yml/badge.svg)](https://github.com/Alviner/drillerfy/actions/workflows/ci.yml)
+[![Go Reference](https://pkg.go.dev/badge/github.com/Alviner/drillerfy.svg)](https://pkg.go.dev/github.com/Alviner/drillerfy)
+[![Go Report Card](https://goreportcard.com/badge/github.com/Alviner/drillerfy)](https://goreportcard.com/report/github.com/Alviner/drillerfy)
+
 ## Overview
 
 Drillerfy is a Go package designed to simplify database testing.

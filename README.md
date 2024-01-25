@@ -58,7 +58,3 @@ See the LICENSE file in the repository for full license text.
 
 Drillerfy was created and is maintained by [Alviner](https://github.com/Alviner).
 Contributions from the community are appreciated.
-
-```
-
-```

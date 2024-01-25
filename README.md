@@ -29,35 +29,8 @@ go get github.com/Alviner/drillerfy
 Provides functionality to easily create and drop databases.
 This is particularly useful in testing environments where you need to set up a fresh database instance for each test run and clean it up afterward.
 
-```(go)
-package main
+```go:examples/tempdb/main.py
 
-import (
- "context"
- "database/sql"
- "log"
-
- "github.com/Alviner/drillerfy/database"
- _ "github.com/jackc/pgx/v5/stdlib"
-)
-
-func main() {
- conn, err := sql.Open("pgx", "database dns")
- if err != nil {
-  log.Fatal(err)
- }
- database, err := database.New(database.WithDialect(database.DialectPostgres))
- if err != nil {
-  log.Fatal(err)
- }
-
- dbName, closer, err := database.Create(context.Background(), "test", conn)
- if err != nil {
-  log.Fatal(err)
- }
- defer closer()
- // ... some useful staff with created db
-}
 ```
 
 ### Migrations Module
@@ -66,40 +39,8 @@ Provides functionality to easily run stairway tests for migrations via goose Pro
 This module simplifies the process of applying and reverting database schema changes,
 which is essential in maintaining consistent database states for testing.
 
-```(go)
-package main
+```go:examples/migoose/main.py
 
-import (
- "database/sql"
- "log"
- "os"
- "time"
-
- _ "github.com/jackc/pgx/v5/stdlib"
-
- "github.com/Alviner/drillerfy/migrations"
- "github.com/pressly/goose/v3"
-)
-
-func main() {
- db, err := sql.Open("pgx", "database dns")
- if err != nil {
-  log.Fatal(err)
- }
- provider, err := goose.NewProvider(
-  goose.DialectPostgres,
-  db,
-  os.DirFS("migrations"),
- )
- if err != nil {
-  log.Fatal(err)
- }
- migrator := migrations.New(provider)
-
- if err := migrator.Stairway(2 * time.Second); err != nil {
-  log.Fatal(err)
- }
-}
 ```
 
 ## Contributing
@@ -117,4 +58,3 @@ See the LICENSE file in the repository for full license text.
 
 Drillerfy was created and is maintained by [Alviner](https://github.com/Alviner).
 Contributions from the community are appreciated.
-````

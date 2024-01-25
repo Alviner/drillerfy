@@ -29,9 +29,7 @@ go get github.com/Alviner/drillerfy
 Provides functionality to easily create and drop databases.
 This is particularly useful in testing environments where you need to set up a fresh database instance for each test run and clean it up afterward.
 
-```go:examples/tempdb/main.py
-
-```
+[Example](examples/tempdb/main.go)
 
 ### Migrations Module
 
@@ -39,9 +37,7 @@ Provides functionality to easily run stairway tests for migrations via goose Pro
 This module simplifies the process of applying and reverting database schema changes,
 which is essential in maintaining consistent database states for testing.
 
-```go:examples/migoose/main.py
-
-```
+[Example](examples/migoose/main.go)
 
 ## Contributing
 

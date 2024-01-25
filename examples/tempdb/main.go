@@ -23,7 +23,7 @@ func main() {
 	if err := db.CreateDatabase(ctx, "example", ""); err != nil {
 		log.Fatal(err)
 	}
-	// .. useful staff
 	defer db.DeleteDatabase(ctx, "example")
+	// .. useful staff
 
 }

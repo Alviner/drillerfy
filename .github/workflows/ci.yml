@@ -42,4 +42,4 @@ jobs:
       - name: Test
         run: make test
         env:
-          TEST_PG_DNS: postgres://pguser:pgpass@localhost:5432/pgdb
+          TEST_PG_DNS: postgresql://pguser:pgpass@localhost:5432/pgdb

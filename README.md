@@ -29,6 +29,8 @@ go get github.com/Alviner/drillerfy
 Provides functionality to easily create and drop databases.
 This is particularly useful in testing environments where you need to set up a fresh database instance for each test run and clean it up afterward.
 
+Inspired by [sqlalchemy-utils](https://github.com/kvesteri/sqlalchemy-utils)
+
 [Example](examples/tempdb/main.go)
 
 ### Migrations Module

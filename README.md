@@ -56,3 +56,7 @@ See the LICENSE file in the repository for full license text.
 
 Drillerfy was created and is maintained by [Alviner](https://github.com/Alviner).
 Contributions from the community are appreciated.
+
+## Repo activity
+
+![Alt](https://repobeats.axiom.co/api/embed/480a84c4a38844d8a0a6524f1a5665d3706d96d2.svg "Repobeats analytics image")

@@ -52,6 +52,9 @@ for instructions on how to submit pull requests, report issues, and suggest enha
 Drillerfy is released under the MIT License.
 See the LICENSE file in the repository for full license text.
 
+## Repo activity
+![Alt](https://repobeats.axiom.co/api/embed/480a84c4a38844d8a0a6524f1a5665d3706d96d2.svg "Repobeats analytics image")
+
 ## Authors
 
 Drillerfy was created and is maintained by [Alviner](https://github.com/Alviner).

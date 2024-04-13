@@ -7,10 +7,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/Alviner/drillerfy/utils_test"
-	"github.com/Alviner/drillerfy/utils_test/postgres"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
+
+	"github.com/Alviner/drillerfy/utils_test"
+	"github.com/Alviner/drillerfy/utils_test/postgres"
 )
 
 func TestPostgres(t *testing.T) {
@@ -19,7 +20,7 @@ func TestPostgres(t *testing.T) {
 	require := require.New(t)
 	assert := assert.New(t)
 
-	dbUrl, err := url.Parse(utils_test.PostgresDNS(t))
+	dbURL, err := url.Parse(utils_test.PostgresDNS(t))
 	require.NoError(err)
 
 	t.Run("create", func(t *testing.T) {
@@ -29,13 +30,13 @@ func TestPostgres(t *testing.T) {
 		ctx, done := context.WithTimeout(context.Background(), 2*time.Second)
 		defer done()
 
-		pg, err := New(dbUrl)
+		pg, err := New(dbURL)
 		require.NoError(err)
-		//act
+		// act
 		require.NoError(pg.CreateDatabase(ctx, dbName, ""))
 		defer func() { require.NoError(pg.DeleteDatabase(ctx, dbName)) }()
 		// assert
-		names, err := postgres.DBNames(t, dbUrl)
+		names, err := postgres.DBNames(t, dbURL)
 		require.NoError(err)
 		assert.Contains(names, dbName)
 	})
@@ -47,17 +48,17 @@ func TestPostgres(t *testing.T) {
 		ctx, done := context.WithTimeout(context.Background(), 5*time.Second)
 		defer done()
 
-		pg, err := New(dbUrl)
+		pg, err := New(dbURL)
 		require.NoError(err)
 
 		require.NoError(pg.CreateDatabase(ctx, templateName, ""))
 		defer func() { require.NoError(pg.DeleteDatabase(ctx, templateName)) }()
-		//act
+		// act
 		require.NoError(pg.CreateDatabase(ctx, dbName, templateName))
 		defer func() { require.NoError(pg.DeleteDatabase(ctx, dbName)) }()
 
 		// assert
-		names, err := postgres.DBNames(t, dbUrl)
+		names, err := postgres.DBNames(t, dbURL)
 		require.NoError(err)
 		assert.Contains(names, dbName)
 	})
@@ -69,15 +70,15 @@ func TestPostgres(t *testing.T) {
 		ctx, done := context.WithTimeout(context.Background(), 5*time.Second)
 		defer done()
 
-		pg, err := New(dbUrl)
+		pg, err := New(dbURL)
 		require.NoError(err)
 
 		require.NoError(pg.CreateDatabase(ctx, dbName, ""))
-		//act
+		// act
 		require.NoError(pg.DeleteDatabase(ctx, dbName))
 
 		// assert
-		names, err := postgres.DBNames(t, dbUrl)
+		names, err := postgres.DBNames(t, dbURL)
 		require.NoError(err)
 		assert.NotContains(names, dbName)
 	})

@@ -5,7 +5,7 @@ go 1.21.0
 require (
 	github.com/jackc/pgx/v5 v5.5.5
 	github.com/mattn/go-sqlite3 v1.14.22
-	github.com/pressly/goose/v3 v3.19.2
+	github.com/pressly/goose/v3 v3.20.0
 	github.com/stretchr/testify v1.9.0
 )
 
@@ -20,8 +20,8 @@ require (
 	github.com/rogpeppe/go-internal v1.12.0 // indirect
 	github.com/sethvargo/go-retry v0.2.4 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
-	golang.org/x/crypto v0.18.0 // indirect
-	golang.org/x/sync v0.6.0 // indirect
+	golang.org/x/crypto v0.21.0 // indirect
+	golang.org/x/sync v0.7.0 // indirect
 	golang.org/x/text v0.14.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )

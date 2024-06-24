@@ -5,7 +5,7 @@ go 1.21.0
 require (
 	github.com/jackc/pgx/v5 v5.6.0
 	github.com/mattn/go-sqlite3 v1.14.22
-	github.com/pressly/goose/v3 v3.20.0
+	github.com/pressly/goose/v3 v3.21.1
 	github.com/stretchr/testify v1.9.0
 )
 

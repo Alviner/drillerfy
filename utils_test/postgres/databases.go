@@ -25,7 +25,11 @@ func DBNames(t *testing.T, url *url.URL) (map[string]bool, error) {
 	if err != nil {
 		return names, err
 	}
-	defer rows.Close()
+	defer func() {
+		if err := rows.Close(); err != nil {
+			t.Errorf("failed to close rows: %v", err)
+		}
+	}()
 	for rows.Next() {
 		var name string
 		if err := rows.Scan(&name); err != nil {
@@ -34,5 +38,4 @@ func DBNames(t *testing.T, url *url.URL) (map[string]bool, error) {
 		names[name] = true
 	}
 	return names, nil
-
 }

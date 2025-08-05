@@ -59,7 +59,6 @@ func (p *Postgres) DisconnectFromDatabase(ctx context.Context, name string) erro
 		)
 	}
 	return nil
-
 }
 
 func New(url *url.URL) (*Postgres, error) {

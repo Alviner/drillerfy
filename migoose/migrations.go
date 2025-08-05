@@ -9,7 +9,6 @@ import (
 )
 
 func New(provider *goose.Provider) *Migrator {
-
 	return &Migrator{provider: provider}
 }
 
@@ -33,7 +32,6 @@ func (mt *Migrator) Stairway(stepTimeout time.Duration) error {
 func (mt *Migrator) Step(ctx context.Context) error {
 	if _, err := mt.provider.UpByOne(ctx); err != nil {
 		return fmt.Errorf("cannot make first up step : %w", err)
-
 	}
 
 	if _, err := mt.provider.Down(ctx); err != nil {

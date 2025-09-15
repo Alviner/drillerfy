@@ -3,7 +3,7 @@ module github.com/Alviner/drillerfy
 go 1.23.0
 
 require (
-	github.com/jackc/pgx/v5 v5.7.5
+	github.com/jackc/pgx/v5 v5.7.6
 	github.com/mattn/go-sqlite3 v1.14.32
 	github.com/pressly/goose/v3 v3.25.0
 	github.com/stretchr/testify v1.11.0

@@ -4,7 +4,7 @@ go 1.24.0
 
 require (
 	github.com/jackc/pgx/v5 v5.7.5
-	github.com/mattn/go-sqlite3 v1.14.33
+	github.com/mattn/go-sqlite3 v1.14.40
 	github.com/pressly/goose/v3 v3.25.0
 	github.com/stretchr/testify v1.11.1
 )
